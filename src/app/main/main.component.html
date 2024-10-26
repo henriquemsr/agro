@@ -1,0 +1,80 @@
+<div class="page">
+    <app-menu></app-menu>
+    <main class="mt10">
+        <div class="container">
+            <div class="row mt20 d-flex">
+                <div class="col-2 box-dash-add link" (click)="addBlockElement()">
+                    <span>
+                        <span class="material-icons">
+                            dashboard_customize
+                        </span>
+                    </span>
+                    <span class="customer">Personalize</span>
+                </div>
+
+
+                <div class="col-2 box-dash-add link" (click)="addBlockElement()">
+                    <span>
+                        <span class="material-icons">
+                            dashboard_customize
+                        </span>
+                    </span>
+                    <span class="customer">ToDo #1 lembrar-me login</span>
+                </div>
+
+
+                <div class="col-2 box-dash link" *ngFor="let item of confirmList">
+                    <span (click)="goPage(item)">
+                        <img [src]="item.image">
+                        <span>{{item.name}}</span>
+                    </span>
+                </div>
+
+
+
+            </div>
+        </div>
+    </main>
+</div>
+
+
+
+<!-- MODAL INSERT BLOCK MENU -->
+<div class="block-insert animate__animated animate__zoomIn animate__faster" *ngIf="callBlock">
+    <span class="d-flex justify-content-end">
+        <button class="btn-default d-flex justify-content-center m50" (click)="callBlock = false">
+            <span>Fechar</span>
+            <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+                <path fill="#fff"
+                    d="M3,16.74L7.76,12L3,7.26L7.26,3L12,7.76L16.74,3L21,7.26L16.24,12L21,16.74L16.74,21L12,16.24L7.26,21L3,16.74M12,13.41L16.74,18.16L18.16,16.74L13.41,12L18.16,7.26L16.74,5.84L12,10.59L7.26,5.84L5.84,7.26L10.59,12L5.84,16.74L7.26,18.16L12,13.41Z" />
+            </svg>
+        </button>
+    </span>
+    <h1 class="d-flex justify-content-center white">Personalize seu Dashboard</h1>
+    <h4 class="d-flex justify-content-center white">clique e arraste um item para a direita.</h4>
+    <div class="container mx-auto p-2 ">
+        <div class="row">
+            <div cdkDropList #minha="cdkDropList" [cdkDropListConnectedTo]="[confirmados]" [cdkDropListData]="myList"
+                class="col-lg-6" (cdkDropListDropped)="drop($event)">
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-danger">
+                        <h3>Opções</h3>
+                    </li>
+                    <li class="list-group-item" *ngFor="let p of myList " cdkDrag>{{p.name}}</li>
+                </ul>
+            </div>
+            <div cdkDropList #confirmados="cdkDropList" [cdkDropListData]="confirmList"
+                [cdkDropListConnectedTo]="[minha]" (cdkDropListDropped)="drop($event)" class="col-lg-6">
+                <ul class="list-group">
+                    <li class="list-group-item active">
+                        <h3>Meu Dashboard</h3>
+                    </li>
+                    <li class="list-group-item" *ngFor="let p of confirmList" cdkDrag>
+                        <img [src]="p.image" class="img-person">
+                        {{p.name}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

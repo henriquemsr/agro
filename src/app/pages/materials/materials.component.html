@@ -1,0 +1,168 @@
+<div class="page">
+    <app-menu></app-menu>
+    <main>
+        <div class="d-flex justify-content-between">
+            <h1 class="yellow m10">Matérias</h1>
+            <span class="btn-round-plus icon-position" (click)="showRegister()">
+                <svg style="width: 24px; height:24px" viewBox="0 0 24 24" *ngIf="!showFormRegister">
+                    <path fill="#fff"
+                        d="M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M13,7H11V11H7V13H11V17H13V13H17V11H13V7Z" />
+                </svg>
+                <svg style="width: 24px; height:24px" viewBox="0 0 24 24" *ngIf="showFormRegister">
+                    <path fill="#fff" d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" />
+                </svg>
+            </span>
+        </div>
+        <div class="container mt20">
+            <div class="row">
+                <div class="content-h">
+                    <div class="card">
+                        <div class="card--content" *ngFor="let item of list?.docs" (click)="selectItem(item)">
+                            <div class="box-3" [ngClass]="{'clicked-box': item.clicked}">
+                                <span>{{item.matter_name}}</span>
+                                <span>{{item.module}}</span>
+                            </div>
+                            <!-- <span (click)="deleteMaterial(item)">
+                                <svg style="width:24px;height:24px;" viewBox="0 0 24 24">
+                                    <path fill="#e43f31"
+                                        d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M16,10V17A1,1 0 0,1 15,18H9A1,1 0 0,1 8,17V10H16M13.5,6L14.5,7H17V9H7V7H9.5L10.5,6H13.5Z" />
+                                </svg>
+                            </span> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            
+            <div class="d-flex justify-content-between mt20" *ngIf="itemSelected">
+
+                <h2 class="grey9">Módulos</h2>
+
+                <button class="btn-delete d-flex align-items-center" (click)="deleteMaterial(itemSelected)">
+                    <span>Deletar módulo</span>
+                    <span>
+                        <svg style="width:24px;height:24px;" viewBox="0 0 24 24">
+                            <path fill="#fff"
+                                d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M16,10V17A1,1 0 0,1 15,18H9A1,1 0 0,1 8,17V10H16M13.5,6L14.5,7H17V9H7V7H9.5L10.5,6H13.5Z" />
+                        </svg>
+                    </span>
+                </button>
+
+            </div>
+
+            <div class="d-flex justify-content-around mt20" *ngIf="!showFormRegister">
+                <div class="box-default" [ngClass]="{'box-default-selected': item.clicked == true}"
+                    *ngFor="let item of itemSelected?.modules" (click)="selectMatter(item)">
+                    <span>{{item.subject}}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mt40" *ngIf="showMatter">
+            <div class="table-responsive d-flex justify-content-center">
+                <table class="table table-dark">
+                    <thead>
+                        <tr>
+                            <th class="yellow">Matéria</th>
+                            <th class="yellow">Assunto</th>
+                            <th class="yellow text-center">Agenda de Alunos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of matters?.units">
+                            <td class="grey9">{{item.matter}}</td>
+                            <td class="grey9">{{item.unitMatter}}</td>
+                            <td>
+                                <span class="link d-flex justify-content-center" (click)="goToSchedule(item)">
+                                    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                                        <path class="icon_fills"
+                                            d="M12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C17.5 22 22 17.5 22 12S17.5 2 12 2M7.7 15.5L7 14.2L11 11.9V7H12.5V12.8L7.7 15.5Z" />
+                                    </svg>
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <div class="container" *ngIf="showFormRegister">
+            <h2 class="grey9">Registrar Matéria</h2>
+            <form class="row" [formGroup]="formRegister">
+                
+                <div class="col-md-3 col-lg-3 col-12">
+                    <div class="form-group text-input">
+                        <label for="nome" class="mt10">Matéria</label>
+                        <input id="nome" type="text" class="input-form-large" formControlName="nameMater">
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-lg-3 col-12">
+                    <div class="form-group text-input">
+                        <label for="nome" class="mt10">Nome da matéria</label>
+                        <input id="nome" type="text" class="input-form-large" formControlName="matter">
+                    </div>
+                </div>
+
+
+                <div class="col-md-3 col-lg-3 col-12">
+                    <div class="form-group">
+                        <label>Quantidade de matérias</label>
+                        <select class="form-control" formControlName="matUnit">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3 col-lg-3 col-12">
+                    <div class="form-group">
+                        <label>Nível</label>
+                        <select class="form-control" formControlName="level">
+                            <option>Básico</option>
+                            <option>Intermediário</option>
+                            <option>Avançado</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <h2 class="grey9">Unidade</h2>
+                </div>
+
+                <!-- <span class="link" (click)="addNameUnit()">
+                    <svg style="width: 24px; height:24px" viewBox="0 0 24 24">
+                        <path fill="#d3a007"
+                            d="M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M13,7H11V11H7V13H11V17H13V13H17V11H13V7Z" />
+                    </svg>
+                </span> -->
+
+                <div class="col-md-5 col-lg-5 col-12">
+                    <div class="form-group text-input">
+                        <label for="nome" class="mt10">Nome da Unidade</label>
+                        <input id="nome" type="text" class="input-form-large" formControlName="subject">
+                    </div>
+                </div>
+                <div class="col-md-1 col-lg-1 col-12 d-flex justify-content-center align-items-center">
+                    <button class="btn btn-info"
+                        [disabled]="formRegister.get('subject')?.invalid || formRegister.get('subject')?.value === ''"
+                        (click)="addNameUnit()">
+                        +
+                    </button>
+                </div>
+                <div class="col-12" *ngFor="let item of units">
+                    <span class="grey9">{{item.subject}}</span>
+                </div>
+                <div class="col-12 d-flex justify-content-end">
+                    <button class="btn-default" [ngClass]="{'bg-smoke' : formRegister.invalid || units.length === 0}"
+                        [disabled]="formRegister.invalid" (click)="save()">Salvar</button>
+                </div>
+
+            </form>
+        </div>
+
+    </main>
+</div>

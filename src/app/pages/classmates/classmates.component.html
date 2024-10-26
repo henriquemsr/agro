@@ -1,0 +1,33 @@
+<div class="page">
+    <app-menu></app-menu>
+    <main>
+        <app-form *ngIf="showForm" [childRecevied]="student" (childActionInjection)="checkBack($event)"></app-form>
+
+        <div *ngIf="!showForm">
+            <span class="btn-round-plus icon-position" (click)="viewForm()">
+                <span class="white material-icons">person_add</span>
+            </span>
+        </div>
+
+        <div class="container mt20" *ngIf="!showForm">
+
+            <h1 class="yellow">Alunos</h1>
+
+            <div class="container mt20">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-12 col-md-3 col-lg-3 box" *ngFor="let item of students?.docs">
+                        <div>
+                            <span class="yellow material-icons">person</span>
+                        </div>
+                        <span class="mt5">{{item.name}}</span>
+                        <span class="mt5">{{item.email}}</span>
+                        <span class="mt5">{{item.phone_number}}</span>
+                        <button class="btn-default mt20" (click)="getStudent(item)">Editar</button>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+</div>

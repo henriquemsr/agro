@@ -1,0 +1,66 @@
+<app-top-bar></app-top-bar>
+<div class="menu-icon" [ngClass]="{'right-menu-icon': showMenu}" (click)="clickMenu()">
+    <span *ngIf="!showMenu">
+        <span class="white material-icons">
+            menu
+        </span>
+    </span>
+    <span *ngIf="showMenu">
+        <span class="white material-icons">
+            close
+        </span>
+    </span>
+</div>
+
+<div class="menu" *ngIf="showMenu" [ngClass]="{'animate__animated animate__fadeInLeft animate__faster': showMenu}">
+    <div>
+        <span (click)="showMenu = false" routerLink="/main">
+            <small>
+                <span class="material-icons">
+                    space_dashboard
+                </span>
+            </small>
+            <small>Dashboard</small>
+        </span>
+        <span (click)="showMenu = false" routerLink="/administration">
+            <small>
+                <span class="material-icons">
+                    manage_accounts
+                </span>
+            </small>
+            <small>Administração</small>
+        </span>
+        <span (click)="showMenu = false" routerLink="/registration">
+            <small>
+                <span class="material-icons">
+                    person_add
+                </span>
+            </small>
+            <small>Matrículas</small>
+        </span>
+        <span (click)="showMenu = false" routerLink="/classmates">
+            <small>
+                <span class="material-icons">
+                    groups
+                </span>
+            </small>
+            <small>Alunos</small>
+        </span>
+        <span (click)="showMenu = false" routerLink="/teacher">
+            <small>
+                <span class="material-icons">
+                    cast_for_education
+                </span>
+            </small>
+            <small>Professores</small>
+        </span>
+        <span (click)="showMenu = false" routerLink="/materials">
+            <small>
+                <span class="material-icons">
+                    local_library
+                </span>
+            </small>
+            <small>Matérias</small>
+        </span>
+    </div>
+</div>

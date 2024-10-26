@@ -1,0 +1,44 @@
+.bar{
+    position: fixed;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width:100%;
+    z-index: 10;
+    height:13vh;
+    margin-top: -10px;
+    background: #292929;
+    span{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 10px;
+        border-radius: 100%;
+        width:40px;
+        height:40px;
+        background: #777;
+        cursor:pointer;
+        svg{
+            path{
+                fill:#323232;
+            }
+        }
+        &:hover{
+            background: #d3a007;
+            color:#fff;
+            svg{
+                path{
+                    fill:#fff;
+                }
+            }
+        }
+    }
+}
+.notification{
+    background: #f38585!important;
+    svg{
+        path{
+            fill:#fff!important;
+        }
+    }
+}

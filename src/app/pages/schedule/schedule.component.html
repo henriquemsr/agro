@@ -1,0 +1,193 @@
+<div class="page">
+    <app-menu></app-menu>
+    <main>
+        <span class="btn-round-plus icon-position" (click)="goBack()">
+            <span class="white material-icons">arrow_back</span>
+        </span>
+        <div class="container mt20">
+            <h1 class="yellow">Agendamento de Alunos</h1>
+        </div>
+
+        <div class="container" *ngIf="toScheduleShow">
+            <div class="row">
+                <div class="ml10 pd10 col-7 bg-dark-theme">
+                    <div>
+                        <span class="m5 mt10 yellow">Aluno Selecionado:</span>
+                        <span class="m5 mt10 white">{{studentSelected?.name}}</span>
+                        </div>
+                </div>
+                <div class="pd10 col-2">
+                    <span class="link" (click)="closeStudentSeleted()">
+                        <svg style="width:32px;height:32px" viewBox="0 0 24 24">
+                            <path fill="#dc4c3f"
+                                d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
+                        </svg>
+                    </span>
+                </div>
+                <div class="ml10 col-7 mt10 mb20 d-flex flex-column bg-dark-theme">
+                    <div>
+                        <span class="yellow mt10 m5">Matéria Selecionada: </span>
+                        <span class="white m5"> {{subjectSelected.matter_subject}}</span>
+                    </div>
+                    <div>
+                        <span class="yellow mt10 m5">Nível: </span>
+                        <span class="white m5"> {{subjectSelected.module_level}}</span>
+                    </div>
+                    <div>
+                        <span class="yellow mt10 m5">Unidade: </span>
+                        <span class="white m5"> {{subjectSelected.unitMatter}}</span>
+                    </div>
+                    <div>
+                        <span class="yellow mt10 m5">Aula: </span>
+                        <span class="white m5"> {{subjectSelected.matter}}</span>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <div class="container d-flex justify-content-between align-items-center">
+            <app-calendar *ngIf="toScheduleShow"></app-calendar>
+            <div class="box-selected" *ngIf="!toScheduleShow">
+                <div>
+                    <div>
+                        <span class="yellow m5">Matéria Selecionada: </span>
+                        <span class="white m5"> {{subjectSelected.matter_subject}}</span>
+                    </div>
+                    <div>
+                        <span class="yellow m5">Nível: </span>
+                        <span class="white m5"> {{subjectSelected.module_level}}</span>
+                    </div>
+                    <div>
+                        <span class="yellow m5">Unidade: </span>
+                        <span class="white m5"> {{subjectSelected.unitMatter}}</span>
+                    </div>
+                    <div>
+                        <span class="yellow m5">Aula: </span>
+                        <span class="white m5"> {{subjectSelected.matter}}</span>
+                    </div>
+
+
+                </div>
+                <div style="width:40%" class="d-flex vertical-align-center" *ngIf="toScheduleShow">
+                    <span class="yellow">Outra programação</span>
+                    <h3 class="yellow">Calendário</h3>
+                </div>
+
+            </div>
+            <div class="box-change">
+                <div class="white">
+                    <svg style="width:75px;height:75px" viewBox="0 0 24 24">
+                        <path fill="#fff"
+                            d="M19 1L14 6V17L19 12.5V1M21 5V18.5C19.9 18.15 18.7 18 17.5 18C15.8 18 13.35 18.65 12 19.5V6C10.55 4.9 8.45 4.5 6.5 4.5C4.55 4.5 2.45 4.9 1 6V20.65C1 20.9 1.25 21.15 1.5 21.15C1.6 21.15 1.65 21.1 1.75 21.1C3.1 20.45 5.05 20 6.5 20C8.45 20 10.55 20.4 12 21.5C13.35 20.65 15.8 20 17.5 20C19.15 20 20.85 20.3 22.25 21.05C22.35 21.1 22.4 21.1 22.5 21.1C22.75 21.1 23 20.85 23 20.6V6C22.4 5.55 21.75 5.25 21 5M10 18.41C8.75 18.09 7.5 18 6.5 18C5.44 18 4.18 18.19 3 18.5V7.13C3.91 6.73 5.14 6.5 6.5 6.5C7.86 6.5 9.09 6.73 10 7.13V18.41Z" />
+                    </svg>
+                </div>
+                <!-- <button class="btn-default" (click)="openModal(template)">Escolher outra matéria</button> -->
+                <button class="btn-default" (click)="showModalMatters()">Escolher outra matéria</button>
+
+            </div>
+        </div>
+
+        <div class="container">
+            <hr class="bb-grey9">
+        </div>
+
+        <div class="container">
+
+            <h2 class="pink mt20 text-center">Selecionar Aluno</h2>
+
+            <div class="d-flex justify-content-end align-items-center mt20">
+
+                <div class="mr5">
+                    <input class="input-default" [(ngModel)]="searching" type="text" placeholder="Pesquisar Aluno">
+                </div>
+
+                <button [ngClass]="searching != '' ? 'btn-icon-pink' : 'btn-icon-yellow' ">
+                    <span class="link d-flex align-items-center">
+                        <svg style="width:33px;height:33px" viewBox="0 0 24 24">
+                            <path fill="#fff"
+                                d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" />
+                        </svg>
+                    </span>
+                </button>
+
+            </div>
+
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th class="yellow">Nome Aluno</th>
+                        <th class="yellow">Email</th>
+                        <th class="yellow">Telefone</th>
+                        <th class="yellow text-center">Selecione um aluno</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of students?.docs">
+                        <td [ngClass]="item.clicked ? 'yellow' : 'grey9' ">{{item.name}}</td>
+                        <td [ngClass]="item.clicked ? 'yellow' : 'grey9' ">{{item.email}}</td>
+                        <td [ngClass]="item.clicked ? 'yellow' : 'grey9' ">{{item.phone_number}}</td>
+                        <td>
+                            <span class="link d-flex justify-content-center" (click)="selectStudent(item)">
+
+                                <svg style="width:24px;height:24px" viewBox="0 0 24 24" *ngIf="item.clicked">
+                                    <path [ngClass]="item.clicked ? 'icon-fill-elected' : 'icon-fill-unselected' "
+                                        d="M21.1,12.5L22.5,13.91L15.97,20.5L12.5,17L13.9,15.59L15.97,17.67L21.1,12.5M11,4A4,4 0 0,1 15,8A4,4 0 0,1 11,12A4,4 0 0,1 7,8A4,4 0 0,1 11,4M11,6A2,2 0 0,0 9,8A2,2 0 0,0 11,10A2,2 0 0,0 13,8A2,2 0 0,0 11,6M11,13C11.68,13 12.5,13.09 13.41,13.26L11.74,14.93L11,14.9C8.03,14.9 4.9,16.36 4.9,17V18.1H11.1L13,20H3V17C3,14.34 8.33,13 11,13Z" />
+                                </svg>
+
+                                <svg style="width:24px;height:24px" viewBox="0 0 24 24" *ngIf="!item.clicked">
+                                    <path [ngClass]="item.clicked ? 'icon-fill-elected' : 'icon-fill-unselected' "
+                                        d="M19,21V19H15V17H19V15L22,18L19,21M13,18C13,18.71 13.15,19.39 13.42,20H2V17C2,14.79 5.58,13 10,13C11,13 11.96,13.09 12.85,13.26C13.68,13.42 14.44,13.64 15.11,13.92C13.83,14.83 13,16.32 13,18M4,17V18H11C11,16.96 11.23,15.97 11.64,15.08L10,15C6.69,15 4,15.9 4,17M10,4A4,4 0 0,1 14,8A4,4 0 0,1 10,12A4,4 0 0,1 6,8A4,4 0 0,1 10,4M10,6A2,2 0 0,0 8,8A2,2 0 0,0 10,10A2,2 0 0,0 12,8A2,2 0 0,0 10,6Z" />
+                                </svg>
+
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </main>
+
+</div>
+<div class="box-modal-default animate__animated animate__zoomIn animate__faster" *ngIf="showModal">
+
+    <span class="d-flex justify-content-end">
+        <button class="btn-default d-flex justify-content-center m50" (click)="showModal = false">
+            <span>Fechar</span>
+            <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+                <path fill="#fff"
+                    d="M3,16.74L7.76,12L3,7.26L7.26,3L12,7.76L16.74,3L21,7.26L16.24,12L21,16.74L16.74,21L12,16.24L7.26,21L3,16.74M12,13.41L16.74,18.16L18.16,16.74L13.41,12L18.16,7.26L16.74,5.84L12,10.59L7.26,5.84L5.84,7.26L10.59,12L5.84,16.74L7.26,18.16L12,13.41Z" />
+            </svg>
+        </button>
+    </span>
+
+    <div class="">
+        <div class="container">
+            <ul class="list-group bg-white">
+                <li class="list-group-item d-flex justify-content-between" *ngFor="let item of list?.docs">
+                    <span class="m5">Quantidade de Unidades:
+                        {{item?.schedule?.matters?.subjects[0]?.units.length}}</span>
+                    <span>Matéria: {{item?.schedule?.matters?.subjects[0]?.subject}}</span>
+                    <span class="green link" (click)="selectMatter(item)">selecionar</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<!-- <ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Matérias</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        modal body
+    </div>
+</ng-template> -->

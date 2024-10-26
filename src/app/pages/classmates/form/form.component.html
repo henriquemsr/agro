@@ -1,0 +1,121 @@
+<span class="btn-round-plus icon-position" (click)="goBack()">
+    <span class="white material-icons">arrow_back</span>
+</span>
+<div class="container mt20">
+
+    <h1 class="yellow">Novo Aluno</h1>
+
+    <form class="row mt30" [formGroup]="formUser">
+        <div class="col-md-3 col-lg-3 col-12">
+            <div class="form-group text-input">
+                <label for="nome" class="mt10">Nome</label>
+                <input id="nome" type="text" class="input-form-large" placeholder="digite o nome"
+                    formControlName="name">
+            </div>
+        </div>
+
+        <div class="col-md-3 col-lg-3 col-12">
+            <div class="form-group text-input">
+                <label for="nome" class="mt10">Idade</label>
+                <input id="nome" type="text" class="input-form-large" placeholder="digite a idade"
+                    formControlName="age">
+            </div>
+        </div>
+
+        <div class="col-md-3 col-lg-3 col-12">
+            <div class="form-group text-input">
+                <label for="nome" class="mt10">Telefone</label>
+                <input id="nome" type="text" class="input-form-large" placeholder="digite o número do celular"
+                    formControlName="phone_number">
+            </div>
+        </div>
+
+        <div class="col-md-3 col-lg-3 col-12">
+            <div class="form-group text-input">
+                <label for="nome" class="mt10">Email</label>
+                <input id="nome" type="email" class="input-form-large" placeholder="digite o email"
+                    formControlName="name" formControlName="email">
+            </div>
+        </div>
+
+        <div class="col-md-3 col-lg-3 col-12">
+            <div class="form-group text-input">
+                <label for="nome" class="mt10">RG</label>
+                <input id="nome" type="text" class="input-form-large" placeholder="digite o email"
+                    formControlName="name" formControlName="rg">
+            </div>
+        </div>
+
+        <div class="col-md-3 col-lg-3 col-12">
+            <div class="form-group text-input">
+                <label for="nome" class="mt10">CPF</label>
+                <input id="nome" type="text" class="input-form-large" placeholder="digite o email"
+                    formControlName="name" formControlName="cpf">
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-6 col-12">
+            <div class="form-group text-input">
+                <label for="nome" class="mt10">Endereço</label>
+                <input id="nome" type="text" class="input-form-large" placeholder="digite o email"
+                    formControlName="name" formControlName="street">
+            </div>
+        </div>
+
+        <div class="col-md-3 col-lg-3 col-12">
+            <div class="form-group text-input">
+                <label for="nome" class="mt10">Número</label>
+                <input id="nome" type="text" class="input-form-large" placeholder="digite o email"
+                    formControlName="name" formControlName="number">
+            </div>
+        </div>
+
+        <div class="col-md-4 col-lg-4 col-12">
+            <div class="form-group text-input">
+                <label for="nome" class="mt10">Bairro</label>
+                <input id="nome" type="text" class="input-form-large" placeholder="digite o email"
+                    formControlName="name" formControlName="district">
+            </div>
+        </div>
+
+        <div class="col-md-5 col-lg-5 col-12">
+            <div class="form-group text-input">
+                <label for="nome" class="mt10">Referência</label>
+                <input id="nome" type="text" class="input-form-large" placeholder="digite o email"
+                    formControlName="name" formControlName="reference">
+            </div>
+        </div>
+
+        <div class="col-md-3 col-lg-3 col-12 d-flex justify-content-between mt10" *ngIf="update">
+            <button class="btn-default" (click)="updateStudent()">Alterar</button>
+            <span class="btn-round-delete" (click)="infoDelete(template)">
+                <span class="white material-icons">delete_outline</span>
+            </span>
+        </div>
+        <div class="col-md-3 col-lg-3 col-12 mt10" *ngIf="!update">
+            <button class="btn-default" (click)="registerStudent()">Salvar</button>
+        </div>
+
+    </form>
+</div>
+
+<ng-template #template>
+    <div class="modal-header">
+        <h2 class="modal-title pull-left">Deseja deletar este Estudante?</h2>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-12 d-flex justify-content-center mt10">
+                <span class="dark">{{this.childRecevied.name}}</span>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center mt10 mb10">
+            <div class="col-md-4 col-lg-4 col-12">
+                <button class="btn-delete" (click)="deleteStudent()">Deletar</button>
+            </div>
+        </div>
+    </div>
+</ng-template>

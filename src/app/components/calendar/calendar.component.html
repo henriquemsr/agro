@@ -1,0 +1,57 @@
+<div class="pannel-edit">
+
+    <div class="container d-flex flex-column">
+        <h3 class="text-center">Selecione a data abaixo:</h3>
+        <div class="box-choice-date" *ngIf="showDate && !infoNoDate">
+            <span class="m5 green">Data Selecionada: </span>
+            <span class="m5 green">
+                {{dia}} {{currentMonth}} {{currentYear}}
+            </span>
+        </div>
+        <p class="text-danger text-center" [ngClass]="{'animated faster fadeInDown' : infoNoDate}"
+            *ngIf="infoNoDate === true;">
+            <span class="m5">Data inválida:</span>
+            <span class="m5">Escolha uma data a partir de hoje.</span>
+    </p>
+
+
+        <div class="calendar-header">
+            <div class="calendar-month">
+                <span class="click-back" (click)="goToLastMonth()">
+                    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                        <path fill="#fff"
+                            d="M11.92,19.92L4,12L11.92,4.08L13.33,5.5L7.83,11H22V13H7.83L13.34,18.5L11.92,19.92M4,12V2H2V22H4V12Z" />
+                    </svg>
+                </span>
+                <span>{{currentMonth}} {{currentYear}}</span>
+                <span class="click-go" (click)="goToNextMonth()">
+                    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                        <path fill="#fff"
+                            d="M12.08,4.08L20,12L12.08,19.92L10.67,18.5L16.17,13H2V11H16.17L10.67,5.5L12.08,4.08M20,12V22H22V2H20V12Z" />
+                    </svg>
+                </span>
+            </div>
+        </div>
+        <div class="calendar-body">
+            <div>
+                <div class="calendar-weekday">
+                    <span>DOM</span>
+                    <span>SEG</span>
+                    <span>TER</span>
+                    <span>QUA</span>
+                    <span>QUI</span>
+                    <span>SEX</span>
+                    <span>SAB</span>
+                </div>
+                <div class="calendar-date">
+                    <span *ngFor="let lastDay of daysInLastMonth" class="last-month column-calendar">{{lastDay}}</span>
+                    <span class="column-calendar" *ngFor="let day of daysInThisMonth" (click)="getDayInicio(day)">
+                        <span>{{day}}</span>
+                    </span>
+                    <span *ngFor="let nextDay of daysInNextMonth" class="next-month column-calendar">{{nextDay}}</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

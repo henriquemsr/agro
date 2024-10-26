@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Professores",
+        "image": "/assets/imgs/teacher.png",
+        "link": "teacher"
+    },
+    {
+        "name": "Alunos",
+        "image": "/assets/imgs/classmates.png",
+        "link": "classmates"
+    },
+    {
+        "name": "Materiais",
+        "image": "/assets/imgs/materials.png",
+        "link": "materials"
+    },
+    {
+        "name": "Administração",
+        "image": "/assets/imgs/administration.png",
+        "link": "administration"
+    },
+    {
+        "name": "Matrículas",
+        "image": "/assets/imgs/registration.png",
+        "link": "registration"
+    }
+]
