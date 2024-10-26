@@ -1,4 +1,6 @@
 # Esse projeto será convertido em um sistema para controle no ramo agro-industrial
+# Angular 11.2.6 [Angular CLI](https://github.com/angular/angular-cli)
+# O backend está conectado ao mongoDB com escrita da API na liguagem nodeJS
 
 A estrutura do projeto está com seguinte configuração:
 - **src**
@@ -11,7 +13,7 @@ A estrutura do projeto está com seguinte configuração:
         - **urls**
 
 
-Versão do Angular [Angular CLI](https://github.com/angular/angular-cli) version 11.2.6.
+
 
 ## Development server
 
