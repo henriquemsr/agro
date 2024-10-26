@@ -1,6 +1,17 @@
-# DashAdmin
+# Esse projeto será convertido em um sistema para controle no ramo agro-industrial
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.6.
+A estrutura do projeto está com seguinte configuração:
+- **src**
+    **app**
+    --**components**    
+    --**login**
+    --**main**
+    --**pages**
+    --**service**
+    --**urls**
+
+
+Versão do Angular [Angular CLI](https://github.com/angular/angular-cli) version 11.2.6.
 
 ## Development server
 
