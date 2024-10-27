@@ -12,9 +12,9 @@ A estrutura do projeto está com seguinte configuração:
         - **service**
         - **urls**
 
-    
+---------------------------------------------------------      
 - **Package                         Version**
----------------------------------------------------------  
+
 - **angular-devkit/architect       0.1202.18**
 - **angular-devkit/build-angular   12.2.18**
 - **angular-devkit/core            12.2.18**
