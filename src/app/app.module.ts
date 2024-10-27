@@ -10,13 +10,12 @@ import { UtilServiceService } from './service/util-service.service';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { NgModel } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-import { ProjectAgroComponent } from './pages/project-agro/project-agro.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProjectAgroComponent,
   ],
   imports: [
     BrowserModule,

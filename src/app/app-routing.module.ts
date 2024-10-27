@@ -43,20 +43,6 @@ const routes: Routes = [
     loadChildren:
       () => import('./pages/schedule/schedule.module').then(v => v.ScheduleModule)
   },
-  {
-    path:"/agro",
-    loadChildren: 
-    () => import('./pages/project-agro/project-agro.module').then(m => m.ProjectAgroModule)
-  }
-  // {
-  //   path:"agro",
-  //   loadChildren: () => import('./pages/agro/agro-routing.module').then(m => m.AgroModule)
-  // }
-  // {
-  //   loadChildren:
-  //   path:"agro",
-  //   ()=> import('./pages/agro/agro-routing.module').then(v=> v.)
-  // }
 ];
 
 @NgModule({
