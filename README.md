@@ -1,6 +1,6 @@
 # Esse projeto será convertido em um sistema para controle no ramo agro-industrial
 # Angular 12.2.18 [Angular CLI](https://github.com/angular/angular-cli)
-# O backend está conectado ao mongoDB com escrita da API na liguagem nodeJS com autenticação e vários CRUDs
+O backend está conectado ao mongoDB com escrita da API na liguagem nodeJS com autenticação e vários CRUDs
 
 A estrutura do projeto está com seguinte configuração:
 - **src**
@@ -12,24 +12,17 @@ A estrutura do projeto está com seguinte configuração:
         - **service**
         - **urls**
 
-
-
-   / \   _ __   __ _ _   _| | __ _ _ __     / ___| |   |_ _|
-   / △ \ | '_ \ / _` | | | | |/ _` | '__|   | |   | |    | | 
-  / ___ \| | | | (_| | |_| | | (_| | |      | |___| |___ | | 
- /_/   \_\_| |_|\__, |\__,_|_|\__,_|_|       \____|_____|___|
-                |___/
     
-Package                         Version
+- **Package                         Version**
 ---------------------------------------------------------  
-@angular-devkit/architect       0.1202.18
-@angular-devkit/build-angular   12.2.18
-@angular-devkit/core            12.2.18
-@angular-devkit/schematics      12.2.18
-@angular/cdk                    12.2.13
-@angular/cli                    12.2.18
-@schematics/angular             12.2.18
-rxjs                            6.6.7
+- **angular-devkit/architect       0.1202.18**
+- **angular-devkit/build-angular   12.2.18**
+- **angular-devkit/core            12.2.18**
+- **angular-devkit/schematics      12.2.18**
+- **angular/cdk                    12.2.13**
+- **angular/cli                    12.2.18**
+- **schematics/angular             12.2.18**
+- **rxjs                            6.6.7**
 
 ## Development server
 
